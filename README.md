@@ -72,3 +72,9 @@ dev
 [oneuser-backend]
 10.x.x.x
 
+```
+
+Sample Deployment Command
+
+```
+ansible-playbook -i dev oneuser-frontend.yml -t <specific_tags> --check
