@@ -21,7 +21,13 @@ Basic Structure of Ansible repository
                               |-------files------python.py
                               |-------templates----sample.j2
                               |-------vars-------yaml.yml
-                              
+              |-----------backend
+                              |------tasks----sample.yml
+                              |-------Handlers----handlers.yml
+                              |-------defaults----defaults.yml
+                              |-------files------python.py
+                              |-------templates----sample.j2
+                              |-------vars-------yaml.yml                             
                               
  ```
  
@@ -36,10 +42,33 @@ Basic Structure of Ansible repository
     - vars/oneusers.yml
   roles:
     - frontend
+  vars:
+    - SAMPLE: false(additional overriding variables)
+
+```
+
+
+ oneuser-backend.yml
+ 
+  ```
+  
+  - hosts: oneuser-backend(This is defined in the inventory)
+  vars_files:
+    - vars/vars.yml
+    - vars/oneusers.yml
+  roles:
     - backend
   vars:
     - SAMPLE: false(additional overriding variables)
 
 ```
 
+dev
+
+```
+[oneuser-frontend]
+10.x.x.x
+
+[oneuser-backend]
+10.x.x.x
 
